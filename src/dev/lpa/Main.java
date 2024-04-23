@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class Main {
     public static void main(String[] args) {
 
-        String sentence = "I like motorcycles.";
+        String sentence = "I like B.M.W. motorcycles.";
 
         // Starts with capital letter, then any characters, then period
         // Regex is compiled in to a Pattern by Java's regex processor
@@ -13,7 +13,7 @@ public class Main {
         System.out.println(matched + ": " + sentence);
 
         // Much more efficient for scaling
-        Pattern firstPattern = Pattern.compile("[A-Z].*[.]");
+        Pattern firstPattern = Pattern.compile("[A-Z].*?[.]");
         var matcher = firstPattern.matcher(sentence);
         System.out.println(matcher.matches() + ": " + sentence);
         System.out.println("sentence.length: " + sentence.length());
@@ -21,6 +21,15 @@ public class Main {
 
         System.out.println(matcher.lookingAt() + ": " + sentence);
         System.out.println("Matched Ending Index: " + matcher.end());
+        System.out.println("Matched on : " + sentence.substring(0, matcher.end()));
+
+
+        System.out.println("-------------");
+
+        System.out.println(matcher.lookingAt() + ": " + sentence);
+        System.out.println("Matched Ending Index: " + matcher.end());
+        System.out.println("Matched on : " + sentence.substring(0, matcher.end()));
+
 
 
 
